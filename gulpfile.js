@@ -16,12 +16,13 @@ var paths  = {
 // Convert, minify and sourcemap the styles
 gulp.task('styles', function () {
   return sass(paths.styles, {
-    style: 'compressed',
+    style: 'expanded',
     sourcemap: true })
     .pipe(maps.write('../maps'))
     .pipe(gulp.dest('pub/css'));
   }
 );
+
 // Join and minify the scripts
 gulp.task('scripts', function() {
   gulp.src(paths.scripts)
@@ -31,6 +32,7 @@ gulp.task('scripts', function() {
   .pipe(uglify())
   .pipe(gulp.dest('pub/js'));
 });
+
 // Minify images
 gulp.task('images', function() {
   return gulp.src(paths.images)
@@ -47,5 +49,20 @@ gulp.task('watch',function() {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.images, ['images']);
 });
+
+// Serve
+gulp.task('webserver', function() {
+  gulp.src('.')
+    .pipe(webserver({
+      host: '0.0.0.0',
+      port: 3456,
+      livereload: true,
+      directoryListing: false,
+      fallback: 'index.html',
+      open: true
+    }));
+});
+
 // Default task: run agulpll at once
 gulp.task('default', ['styles','scripts', 'images', 'watch']);
+gulp.task('serve', ['default', 'webserver']);
