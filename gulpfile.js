@@ -1,18 +1,20 @@
 // Dependencies
-var gulp   = require('gulp');
-var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var sass   = require('gulp-ruby-sass');
-var maps   = require('gulp-sourcemaps');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var paths  = {
+var gulp      = require('gulp');
+var jshint    = require('gulp-jshint');
+var uglify    = require('gulp-uglify');
+var concat    = require('gulp-concat');
+var rename    = require('gulp-rename');
+var sass      = require('gulp-ruby-sass');
+var maps      = require('gulp-sourcemaps');
+var webserver = require('gulp-webserver');
+var imagemin  = require('gulp-imagemin');
+var pngquant  = require('imagemin-pngquant');
+var paths     = {
   scripts: 'src/js/*.js',
-  styles: 'src/sass/*.s*ss',
-  images: 'src/img/*'
+  styles:  'src/sass/*.s*ss',
+  images:  'src/img/*'
 };
+
 // Convert, minify and sourcemap the styles
 gulp.task('styles', function () {
   return sass(paths.styles, {
@@ -43,6 +45,7 @@ gulp.task('images', function() {
   }))
   .pipe(gulp.dest('pub/img'));
 });
+
 // Watcher
 gulp.task('watch',function() {
   gulp.watch(paths.styles, ['styles']);
@@ -55,7 +58,7 @@ gulp.task('webserver', function() {
   gulp.src('.')
     .pipe(webserver({
       host: '0.0.0.0',
-      port: 3456,
+      port: 3455,
       livereload: true,
       directoryListing: false,
       fallback: 'index.html',
