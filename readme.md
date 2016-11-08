@@ -54,13 +54,14 @@ Para rodar as tarefas configuradas no `gulpfile.js`:
 ```
 $ gulp
 ```
+
 ou
 
 ```
 $ gulp nome-da-tarefa
 ```
 
-#### Plugins do Gulp usados nesta estrutura
+#### Plugins do Gulp/NPM usados nesta estrutura
 - **gulp-concat:** Junta arquivos.
 - **gulp-rename:** Renomeia arquivos.
 - **gulp-jshint:** Verifica a qualidade de seu código Javascript.
@@ -69,6 +70,8 @@ $ gulp nome-da-tarefa
 - **gulp-sourcemaps:** Mapeia o código dos arquivos minificados.
 - **gulp-imagemin:** Minifica imagens.
 - **imagemin-pngquant:** Auxilia a minificar arquivos PNG (Portable Network Graphics).
+- **gulp-shell:** Executa tarefas com comandos de terminal (UNIX).
+- **kss:** Knyle Style Sheets, usado para documentação de estilos Sass/LESS/CSS. Saiba mais no [site do projeto](http://warpspire.com/kss/).
 
 Para instalar outro plugin que necessite, basta executar o comando abaixo:
 
@@ -97,13 +100,15 @@ $ (sudo) npm install -g bower
 
 #### Utilização
 Para encontrar uma dependência no bower:
+
 ```
 $ bower search
 ```
 
 Para instalar:
+
 ```
 $ bower install <nome-do-repositorio>
 ```
 
-Para informações mais específicas, consulte http://bower.io.
+Para informações mais específicas, consulte o [site do Bower](http://bower.io).
