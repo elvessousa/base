@@ -46,20 +46,22 @@ var paths = {
 // ----------------------------------------------------
 gulp.task('styles', function () {
   return sass(paths.styles, {
-    style: 'expanded',
+    style: 'compressed',
     sourcemap: true })
     .pipe(maps.write('../maps'))
     .pipe(gulp.dest('pub/css'))
-    .pipe(gulp.dest('docs/'));
   }
 );
 
 // ----------------------------------------------------
 // Styleguide & documentation
 // ----------------------------------------------------
-gulp.task('docs', shell.task(
-  [kss + 'src/sass/ docs/ --css /docs/style.css']
-));
+gulp.task('docs', function () {
+  return sass(paths.styles, { style: 'compressed'})
+  .pipe(gulp.dest('docs/'))
+  .pipe(shell([kss + 'src/sass/ docs/ --css /docs/style.css']));
+
+});
 
 // ----------------------------------------------------
 // Join and minify the scripts
@@ -100,14 +102,14 @@ gulp.task('watch',function() {
 // ----------------------------------------------------
 gulp.task('webserver', function() {
   gulp.src('.')
-    .pipe(webserver({
-      host: '0.0.0.0',
-      port: 3455,
-      livereload: true,
-      directoryListing: false,
-      fallback: 'index.html',
-      open: true
-    }));
+  .pipe(webserver({
+    host: '0.0.0.0',
+    port: 3455,
+    livereload: true,
+    directoryListing: false,
+    fallback: 'index.html',
+    open: true
+  }));
 });
 
 // ----------------------------------------------------
