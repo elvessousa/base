@@ -115,5 +115,5 @@ gulp.task('webserver', function() {
 // ----------------------------------------------------
 // Default task: run gulp all at once
 // ----------------------------------------------------
-gulp.task('default', ['styles', 'docs', 'scripts', 'images', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'images', 'watch']);
 gulp.task('serve', ['default', 'webserver']);
