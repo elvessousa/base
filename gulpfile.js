@@ -92,9 +92,9 @@ gulp.task('images', function() {
 // Watcher
 // ----------------------------------------------------
 gulp.task('watch',function() {
-  gulp.watch(paths.styles, ['styles']);
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.styles, gulp.series('styles'));
+  gulp.watch(paths.scripts, gulp.series('scripts'));
+  gulp.watch(paths.images, gulp.series('images'));
 });
 
 // ----------------------------------------------------
@@ -115,5 +115,5 @@ gulp.task('webserver', function() {
 // ----------------------------------------------------
 // Default task: run gulp all at once
 // ----------------------------------------------------
-gulp.task('default', ['styles', 'scripts', 'images', 'watch']);
-gulp.task('serve', ['default', 'webserver']);
+gulp.task('default', gulp.parallel('styles', 'scripts', 'images', 'watch'));
+gulp.task('serve', gulp.parallel('default', 'webserver'));
