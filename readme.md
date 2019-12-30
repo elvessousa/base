@@ -24,35 +24,17 @@ Este diretórios só são necessários no ambiente de desenvolvimento, sendo des
 Para instalar os arquivos necessários, confira se todas as dependências abaixo estão satisfeitas. Caso estejam, basta executar no terminal:
 
 ```
-$ npm install
+$ yarn install
 ```
-
-```
-$ bower install
-```
-
-O primeiro instala o *gulp* e seus plugins e o segundo instala as outras dependências (Ex.: angular, bootstrap-css e jquery).
 
 ***
 
-
-## Dependências para a instalação
-
-### NPM: node package manager
-Se você não possui o node instalado, baixe o [nodejs](https://nodejs.org) no site, ou utilize um [gerenciador de pacotes](https://nodejs.org/en/download/package-manager/) de sua preferência. Após isso o npm estará instalado no seu sistema.
-
-### Gulp
-É um automatizador de tarefas. Para configurá-lo use o arquivo `gulpfile.js` que está na raiz do projeto. Mais informações em http://gulpjs.com. Caso queira instalar o gulp no sistema execute:
-
-```
-$ (sudo) npm install -g gulp
-```
 
 #### Utilização
 Para rodar as tarefas configuradas no `gulpfile.js`:
 
 ```
-$ gulp
+$ yarn run serve
 ```
 
 ou
@@ -76,39 +58,11 @@ $ gulp nome-da-tarefa
 Para instalar outro plugin que necessite, basta executar o comando abaixo:
 
 ```
-$ npm install <nome-do-plugin>
+$ yarn add <nome-do-plugin>
 ```
 
-Para adiciona-lo nas dependências do projeto, adicione `--save` no final do comando:
+Use `--dev`, para listá-lo como dependência para o desenvolvimento:
 
 ```
-$ npm install <nome-do-plugin> --save
+$ yarn add <nome-do-plugin> --dev
 ```
-
-Use `--save-dev`, para listá-lo como dependência para o desenvolvimento:
-
-```
-$ npm install <nome-do-plugin> --save
-```
-
-### Bower
-O *Bower* administra dependências, como frameworks de JS ou CSS, eliminando a necessidade de substituir/atualizar arquivos manualmente, e com isso  eliminá-los do versionamento do git. Caso queira instalar o *Bower* no sistema execute:
-
-```
-$ (sudo) npm install -g bower
-```
-
-#### Utilização
-Para encontrar uma dependência no bower:
-
-```
-$ bower search
-```
-
-Para instalar:
-
-```
-$ bower install <nome-do-repositorio>
-```
-
-Para informações mais específicas, consulte o [site do Bower](http://bower.io).
